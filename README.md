@@ -1,7 +1,7 @@
-# ImmunoLynk: COVID19 Immunity Testing Results on the Blockchain
-MIT COVID Hack Challenge 2020: Team #thedreamteam
+# DigitalDoc: Document Registry on the Blockchain
+Shawee MegaHack 2 2020: Team 21
 
-This is a simple but effective implementation of a blockchain-based descentralized test results validator.
+This is a simple but effective implementation of a blockchain-based descentralized document registry.
 
 The project is divided into the sections bellow.
 
@@ -56,22 +56,11 @@ Response:
 }
 ```
 
-## Immuno Lynk frontend (app)
+## Immuno Lynk frontend (webapp)
 
-App built using React components through [expo.io](expo.io) that reads QR Code, automatically takes a snapshot of the test and send's to backend server.
+App built using React components through React.js that takes and uploaded file and sends to server.
 
-We also have an analytical [dashboard webapp](https://github.com/lon-io/immunolynk-dashboard).
-
-Code is available at [Excellence Ilesamni's repo](https://github.com/lon-io/immunolynk-app).
-
-
-## Result recognition network (Deep Learning Model)
-
-Model built using Keras and OpenCV2 to detect stripes on the image and determine the test results automatically from the uploaded and processes image.
-
-Full code found in [Veeresh Shringar's repo](https://github.com/VeereshShringari/COVID-testing).
-
-A very simple legacy implementation done at the MIT Hackathon is located at result_recognition_old/, though it's not used anymore.
+Code is available at [inserir repo](https://github.com/lon-io/immunolynk-app).
 
 ## Blockchain database alternative
 
