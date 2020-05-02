@@ -40,6 +40,9 @@ def receive_image():
         # define if request was successful
         message["success"] = True
 
+        # send back the name
+        message["filename"] = filename
+
         with open ('current_data.json', 'w') as cd:
             json.dump(message, cd)
         return jsonify(message)
