@@ -31,6 +31,8 @@ Response:
     "link": "https://ipfs.infura.io:5001/api/v0/cat?arg=Qme9vV3FULEMiggF3i3fecvD8JQ5ysiAoZhyuTQDFkViWR",
     "timestamp": "2020-04-05 13:16:16.393551",
     "type": "IMG"
+    "success": True or False,
+    "filename": "filename"
 }
 ```
 
