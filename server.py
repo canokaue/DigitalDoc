@@ -33,6 +33,9 @@ def receive_image():
         response = ipfs.upload_ipfs(_current_imagepath, 'IMG', _current_imagepath)
         message = clean_response(response)
 
+        # define if request was successful
+        message["success"] = True
+
         with open ('current_data.json', 'w') as cd:
             json.dump(message, cd)
         return jsonify(message)
@@ -40,7 +43,7 @@ def receive_image():
         message = 'Error receiving message: % s' % e
         with open ('error.json', 'w') as err:
             json.dump(message, err)
-        return jsonify({'status' : message})
+        return jsonify({'status' : message, 'success': False})
 
 
 def clean_response(response):
