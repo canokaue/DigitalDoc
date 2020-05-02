@@ -5,6 +5,7 @@ import os
 import json
 from tempfile import NamedTemporaryFile
 import tempfile
+from sms import send_sms
 
 server = Flask(__name__)
 CORS(server)
@@ -42,6 +43,12 @@ def receive_image():
 
         # send back the name
         message["filename"] = filename
+
+        sms = "Hash: %s \n \
+File: %s \n \
+Type: %s \n \
+Link: %s \n" % (message['Hash'], message['filename'], message['type'], message['link'])
+        send_sms(sms)
 
         with open ('current_data.json', 'w') as cd:
             json.dump(message, cd)
