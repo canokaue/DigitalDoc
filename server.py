@@ -1,10 +1,13 @@
 import ipfs
 from flask import Flask, jsonify,request
+from flask_cors import CORS
 import os
 import json
 from tempfile import NamedTemporaryFile
+import tempfile
 
 server = Flask(__name__)
+CORS(server)
 
 PORT = '5000'
 
@@ -12,7 +15,7 @@ THREAD_RUN = False # keep false for model
 
 DEBUG_RUN = False
 
-HOST = '0.0.0.0'
+HOST = 'localhost'
 
 MYIP = ''
 
@@ -26,7 +29,8 @@ def receive_image():
         # Get request file and save to server
         image = request.files['file']
         filename = image.filename
-        _current_imagepath = ipfs.DOWNLOADS_PATH + str(filename)
+
+        _current_imagepath = os.path.join(tempfile.gettempdir(), filename)
         image.save(_current_imagepath)
 
         # Upload to blockchain, save current data and return link to client
@@ -39,7 +43,7 @@ def receive_image():
         with open ('current_data.json', 'w') as cd:
             json.dump(message, cd)
         return jsonify(message)
-    except Exception as e:
+    except Exception as e:        
         message = 'Error receiving message: % s' % e
         with open ('error.json', 'w') as err:
             json.dump(message, err)
