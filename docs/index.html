@@ -130,10 +130,10 @@
 				<!-- Promo Title -->
 <div class="promo-title-wrapper helper pt60" id='sobre'>
 	<h3 class="promo-title" data-icon="&#xe6af">
-		Unique Features
+		Saiba Mais
 	</h3>
 	<p class="promo-description">
-		Amet quis suscipit modi animi quia veniam id, sed nihil? Necessitatibus expedita, velit, itaque tenetur quisquam impedit cumque eum. Dolorum, natus earum.
+		Aproveite todas as vantagens da tecnonolgia Blockchain para facilitar o registro e acesso de documentos por uma fração do preço e com agilidade inédita.
 	</p>
 </div>
 <!-- End of Promo Title -->
@@ -142,23 +142,14 @@
 					<div class="col-md-6">
 						<!-- Box -->
 <div class="box box-small-icon-alt">
-
-	
-
 	
 		<i class="pe-7s-plugin box-icon"></i>
-	
 
 	
-
-	
-
-
-	
-	<h4 class="box-title">Components</h4>
+	<h4 class="box-title">Modular</h4>
 	
 	
-	<p class="box-description">Dolores, dolore! Iusto veritatis nesciunt quaerat officia eveniet sunt eligendi. Nulla ducimus expedita, voluptas beatae, ipsum itaque.</p>
+	<p class="box-description">Nunca mais passe pelo impecílio de reconhecer firma em múltiplos cartórios. Uma vez registrado na nossa rede, qualquer nó autenticado consegue acessar seus documentos instantaneamente.</p>
 	
 	
 </div>
@@ -168,23 +159,11 @@
 						<!-- Box -->
 <div class="box box-small-icon-alt">
 
-	
+		<i class="pe-7s-cloud-upload box-icon"></i>
 
+	<h4 class="box-title">Escalável</h4>
 	
-		<i class="pe-7s-eyedropper box-icon"></i>
-	
-
-	
-
-	
-
-
-	
-	<h4 class="box-title">Colors</h4>
-	
-	
-	<p class="box-description">Architecto tempora id, reprehenderit, aliquam corporis illum in eius vero rem qui reiciendis, dolorem nam iure totam.</p>
-	
+	<p class="box-description">Nossa infraestrutura cloud apenas melhora a medida que novos estabelicimentos entram na rede, contando com deploys automatizados de blockchains IPFS privadas.</p>
 	
 </div>
 <!-- End of Box -->
@@ -195,22 +174,13 @@
 						<!-- Box -->
 <div class="box box-small-icon-alt">
 
-	
-
-	
-		<i class="pe-7s-tools box-icon"></i>
-	
-
-	
-
-	
-
-
-	
-	<h4 class="box-title">Customization</h4>
+		<i class="pe-7s-safe box-icon"></i>
 	
 	
-	<p class="box-description">Nemo, aliquid, alias! A quod doloremque minima porro sequi, facilis velit dolorum iusto assumenda, sed, nemo provident?</p>
+	<h4 class="box-title">Seguro</h4>
+	
+	
+	<p class="box-description">Todos os arquivos guardados são imutáveis e criptografados end-to-end, garantindo que apenas você e o estabelecimento registrador tenham acesso a eles.</p>
 	
 	
 </div>
@@ -223,19 +193,12 @@
 	
 
 	
-		<i class="pe-7s-cup box-icon"></i>
+		<i class="pe-7s-piggy box-icon"></i>
 	
-
-	
-
-	
-
-
-	
-	<h4 class="box-title">Premium</h4>
+	<h4 class="box-title">Acessível</h4>
 	
 	
-	<p class="box-description">Voluptates, rerum, iusto sit, temporibus iure autem vel esse sapiente dolorum nostrum qui dignissimos officiis ea! Possimus.</p>
+	<p class="box-description">Corte gastos em filas, transporte, materiais, esperas operacionais, retrabalhos e burocracias contando com o Estado-da-Arte em infrainstrutura digital, sem complicações desnecessárias.</p>
 	
 	
 </div>
@@ -246,10 +209,11 @@
 				<!-- Promo Title -->
 <div class="promo-title-wrapper ">
 	<h3 class="promo-title" data-icon="&#xe629" id='como'>
-		How it works
+		Como funciona
 	</h3>
 	<p class="promo-description">
-		Fugit impedit ea eveniet ullam distinctio et quisquam nam laudantium nemo cumque consequuntur magni quis unde voluptates velit temporibus, blanditiis, laboriosam minima.
+		<br>Cada documento recebido é verificado, criptografado e guardado na Blockchain IPFS. <br><br> O link de acesso é entregue para a entidade registradora diretamente em seu dashboard + pdf pronto para impressão.
+		<br><br> O cliente também imediatamente recebe por SMS (graças à API da Twilio) o link de acesso + informações adicionais sobre seu documento. Este registro é perpétuo, portanto esqueça perdas, danos e invalidez.
 	</p>
 </div>
 <!-- End of Promo Title -->
@@ -260,24 +224,46 @@
 						
 <div class="code-highlight ">
 	<span class="js-copy-to-clipboard copy-code">copy</span>
-<pre><code class="language-javascript js-code">var InteractiveSteps = (function(){
-	var steps = $('.js-steps-interactive');
+<pre><code class="language-python py-code">
 
-	steps.each(function() {
-		var step = $(this);
-		var config = config = {
-			headerTag: "h4",
-		    transitionEffect: "fade",
-		    labels: {
-		    	current: ''
-		    }
-		}
-		var userConfig = step.data('config');
+import ipfs
+from flask import Flask, jsonify,request
+from flask_cors import CORS
+import os
+import json
+from tempfile import NamedTemporaryFile
+import tempfile
+from sms import send_sms
 
-		$.extend(true, config, userConfig);
-		steps.steps(config);
-	});
-})();
+
+	@server.route('/image', methods=['POST'])
+	def receive_image():
+		# Get request file and save to server
+		image = request.files['file']
+		filename = image.filename
+
+		_current_imagepath = os.path.join(tempfile.gettempdir(), filename)
+		image.save(_current_imagepath)
+
+		# Upload to blockchain, save current data and return link to client
+		response = ipfs.upload_ipfs(_current_imagepath, 'IMG', _current_imagepath)
+		message = clean_response(response)
+
+		# define if request was successful
+		message["success"] = True
+
+		# send back the name
+		message["filename"] = filename
+
+		sms = "Hash: %s \n \
+File: %s \n \
+Type: %s \n \
+Link: %s \n" % (message['Hash'], message['filename'], message['type'], message['link'])
+		send_sms(sms)
+
+		with open ('current_data.json', 'w') as cd:
+			json.dump(message, cd)
+		return jsonify(message)
 </code></pre></div>
 
 
@@ -297,10 +283,10 @@
 					<!-- Promo Title -->
 <div class="promo-title-wrapper " id='demo'>
 	<h3 class="promo-title" data-icon="&#xe6c9">
-		Give it a try
+		Veja por sí só
 	</h3>
 	<p class="promo-description">
-		Voluptates repellendus, harum deleniti fuga quod aut! Fugiat laborum repellat sed reprehenderit illum quasi cumque ipsam sint eveniet? Quaerat deleniti, distinctio inventore.
+		Não ficamos só no papo. Veja nossa infraestrutura cloud operando diretamente no seu navegador, desktop ou mobile. Faça o upload de até 10 imagens e receba o pdf contendo os links para o registro na Blockchain em instantes.
 	</p>
 </div>
 <!-- End of Promo Title -->
@@ -312,7 +298,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="helper center mb60">
-						<a href="#" class="reguest-demo-button button blue stroke rounded button-icon button-icon-right">
+						<a href="https://digital-doc-a1a2c.web.app/" target='_blank' class="reguest-demo-button button blue stroke rounded button-icon button-icon-right">
 							live demo
 							<i class="fa fa-angle-right"></i>
 						</a>
@@ -337,10 +323,10 @@
 				<!-- Promo Title -->
 <div class="promo-title-wrapper " id='dashboard'>
 	<h3 class="promo-title" data-icon="&#xe642">
-		Use something you like
+		Dashboard
 	</h3>
 	<p class="promo-description">
-		Voluptates repellendus, harum deleniti fuga quod aut! Fugiat laborum repellat sed reprehenderit illum quasi cumque ipsam sint eveniet? Quaerat deleniti, distinctio inventore.
+		Como agente do cartório, tenha acesso imediato a todos os registros feitos no seu sistema. Envie requisições instantaneamente verificadas para acesso a documentos de outros cartórios, exporte dados e tenha acesso a analíticos poderosos.
 	</p>
 </div>
 <!-- End of Promo Title -->
@@ -352,11 +338,11 @@
 			
 	<img src="img/demos/boxes/7.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
 
-			<h5 class="featured-boxes-item-pretitle">more</h5>
-			<h4 class="featured-boxes-item-title">Flexibility</h4>
-			<p class="featured-boxes-item-description">Eaque dolores, consectetur doloribus suscipit harum nisi sequi distinctio.</p>
+			<h5 class="featured-boxes-item-pretitle">mais</h5>
+			<h4 class="featured-boxes-item-title">Insights</h4>
+			<p class="featured-boxes-item-description">Acesse KPIs e gráficos autogerados com base nos seus dados e customize o dashboard ótimo para seu cartório.</p>
 			<a href="#" class="featured-boxes-item-button button blue stroke rounded">
-				Learn more
+				Acessar
 			</a>
 		</li>
 	
@@ -364,11 +350,11 @@
 			
 	<img src="img/demos/boxes/8.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
 
-			<h5 class="featured-boxes-item-pretitle">more</h5>
-			<h4 class="featured-boxes-item-title">Complexity</h4>
-			<p class="featured-boxes-item-description">Eaque dolores, consectetur doloribus suscipit harum nisi sequi distinctio.</p>
+			<h5 class="featured-boxes-item-pretitle">mais</h5>
+			<h4 class="featured-boxes-item-title">Agilidade</h4>
+			<p class="featured-boxes-item-description">Nosso próprio sistema de delegação descentralizada cuida da validação e troca de dados entre entidades.</p>
 			<a href="#" class="featured-boxes-item-button button blue stroke rounded">
-				Learn more
+				Acessar
 			</a>
 		</li>
 	
@@ -376,11 +362,11 @@
 			
 	<img src="img/demos/boxes/9.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
 
-			<h5 class="featured-boxes-item-pretitle">less</h5>
-			<h4 class="featured-boxes-item-title">Confusion</h4>
-			<p class="featured-boxes-item-description">Eaque dolores, consectetur doloribus suscipit harum nisi sequi distinctio.</p>
+			<h5 class="featured-boxes-item-pretitle">menos</h5>
+			<h4 class="featured-boxes-item-title">Burocracia</h4>
+			<p class="featured-boxes-item-description">Conte com uma interface limpa, simples e modular para tomar decisões importantes para sua equipe e otimizar sua operação.</p>
 			<a href="#" class="featured-boxes-item-button button blue stroke rounded">
-				Learn more
+				Acessar
 			</a>
 		</li>
 	
