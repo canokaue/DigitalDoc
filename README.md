@@ -1,4 +1,4 @@
-# DigitalDoc: Document Registry on the Blockchain
+# DigitalDoc: Document Registry on the Blockchain 
 Shawee MegaHack 2 2020: Team 21
 
 This is a simple but effective implementation of a blockchain-based descentralized document registry.
