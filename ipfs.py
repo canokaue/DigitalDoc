@@ -37,8 +37,8 @@ def upload_ipfs(file_path, file_type, cid):
     new_dict = json.loads(new_data)
 
     # Dump new handled data
-    with open('uploads.json', 'w') as uploads:
-        json.dump(new_dict, uploads)
+    #with open('uploads.json', 'w') as uploads:
+    #    json.dump(new_dict, uploads)
 
     return response
 
