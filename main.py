@@ -8,7 +8,7 @@ import tempfile
 from sms import send_sms
 
 app = Flask(__name__)
-# CORS(server)
+CORS(app)
 
 PORT = '5000'
 
