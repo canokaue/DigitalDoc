@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+    <!-- Page title -->
+	<title>DigitalDoc</title>
+
+	<!-- Page description -->
+	<meta name="description" content="">
+
+	<!-- Meta -->
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon  -->
+    <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+
+    
+
+    
+    
+    <script>
+    var _rollbarConfig = {
+        accessToken: "40e9ea2900a74f438407aa4d66069634",
+        captureUncaught: true,
+        payload: {
+            environment: "test"
+        }
+    };
+    !function(r){function o(e){if(t[e])return t[e].exports;var n=t[e]={exports:{},id:e,loaded:!1};return r[e].call(n.exports,n,n.exports,o),n.loaded=!0,n.exports}var t={};return o.m=r,o.c=t,o.p="",o(0)}([function(r,o,t){"use strict";var e=t(1).Rollbar,n=t(2),i="https://d37gvrvc0wt4s1.cloudfront.net/js/v1.7/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||i;var a=e.init(window,_rollbarConfig),l=n(a,_rollbarConfig);a.loadFull(window,document,!1,_rollbarConfig,l)},function(r,o,t){"use strict";function e(r){this.shimId=++s,this.notifier=null,this.parentShim=r,this.logger=function(){},window.console&&void 0===window.console.shimId&&(this.logger=window.console.log)}function n(r,o,t){window._rollbarWrappedError&&(t[4]||(t[4]=window._rollbarWrappedError),t[5]||(t[5]=window._rollbarWrappedError._rollbarContext),window._rollbarWrappedError=null),r.uncaughtError.apply(r,t),o&&o.apply(window,t)}function i(r){var o=e;return l(function(){if(this.notifier)return this.notifier[r].apply(this.notifier,arguments);var t=this,e="scope"===r;e&&(t=new o(this));var n=Array.prototype.slice.call(arguments,0),i={shim:t,method:r,args:n,ts:new Date};return window._rollbarShimQueue.push(i),e?t:void 0})}function a(r,o){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){var t=o.addEventListener;o.addEventListener=function(o,e,n){t.call(this,o,r.wrap(e),n)};var e=o.removeEventListener;o.removeEventListener=function(r,o,t){e.call(this,r,o&&o._wrapped?o._wrapped:o,t)}}}function l(r,o){return o=o||window.console.log||function(){},function(){try{return r.apply(this,arguments)}catch(t){o("Rollbar internal error:",t)}}}var s=0;e.init=function(r,o){var t=o.globalAlias||"Rollbar";if("object"==typeof r[t])return r[t];r._rollbarShimQueue=[],r._rollbarWrappedError=null,o=o||{};var i=new e;return l(function(){if(i.configure(o),o.captureUncaught){var e=r.onerror;r.onerror=function(){var r=Array.prototype.slice.call(arguments,0);n(i,e,r)};var l,s,u="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(l=0;l<u.length;++l)s=u[l],r[s]&&r[s].prototype&&a(i,r[s].prototype)}return r[t]=i,i},i.logger)()},e.prototype.loadFull=function(r,o,t,e,n){var i=l(function(){var r=o.createElement("script"),n=o.getElementsByTagName("script")[0];r.src=e.rollbarJsUrl,r.async=!t,r.onload=a,n.parentNode.insertBefore(r,n)},this.logger),a=l(function(){var o;if(void 0===r._rollbarPayloadQueue){var t,e,i,a;for(o=new Error("rollbar.js did not load");t=r._rollbarShimQueue.shift();)for(i=t.args,a=0;a<i.length;++a)if(e=i[a],"function"==typeof e){e(o);break}}"function"==typeof n&&n(o)},this.logger);l(function(){t?i():r.addEventListener?r.addEventListener("load",i,!1):r.attachEvent("onload",i)},this.logger)()},e.prototype.wrap=function(r,o){try{var t;if(t="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._wrapped){r._wrapped=function(){try{return r.apply(this,arguments)}catch(o){throw o._rollbarContext=t()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._wrapped._isWrap=!0;for(var e in r)r.hasOwnProperty(e)&&(r._wrapped[e]=r[e])}return r._wrapped}catch(n){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),p=0;p<u.length;++p)e.prototype[u[p]]=i(u[p]);r.exports={Rollbar:e,_rollbarWindowOnError:n}},function(r,o,t){"use strict";r.exports=function(r,o){return function(t){if(!t&&!window._rollbarInitialized){var e=window.RollbarNotifier,n=o||{},i=n.globalAlias||"Rollbar",a=window.Rollbar.init(n,r);a._processShimQueue(window._rollbarShimQueue||[]),window[i]=a,window._rollbarInitialized=!0,e.processPayloads()}}}}]);
+    </script>
+    
+
+    <!-- Include StyleSheets -->
+    
+    <link rel="stylesheet" href="css/style.min.css">
+    
+    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+
+    <script src="js/modernizr.js"></script>
+
+</head>
+<body class="">
+	<!--[if lt IE 8]>
+	    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+    
+    <!-- Preloader: uncomment this if you want to show a smooth preloader while the page is loading. Don't forget to add the 'js-preload-me' class on the <body> tag. -->
+    <!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div>
+ -->
+    <!-- End of Preloader -->
+    
+
+    <div class="page js-page ">
+        
+	<!-- Header -->
+<div class="header header-over large">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-5">
+				
+<!-- Logo Image -->
+<a href="index.html" class="logo-image logo-animated"><img src="img/logos/logo.png" alt="logo"></a>
+<!-- End of Logo Image -->
+
+			</div>
+			<div class="col-md-9 col-sm-6 col-xs-7">
+				<!-- Menu -->
+<nav class="right helper">
+	<ul class="menu sf-menu js-menu">
+		<li><a href="#sobre">Sobre</a></li>
+		<li><a href="https://digital-doc-a1a2c.web.app/" target='_blank'>Demo</a></li>
+		<li><a href="login.html">Dashboard</a></li>
+		<li><a href="#video">Vídeo</a></li>
+	</ul>
+</nav>
+<!-- End of Menu -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Header -->
+
+<!-- Header Back -->
+<div class="header-back header-back-default header-back-full-page js-full-page">
+	<div class="header-back-container">
+		<div class="container" id='home'>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Page Info -->
+<div class="page-info helper center">
+	
+	<h1 class="page-title">Seguro. Remoto. Eficiente.</h1>
+	
+	
+	<h2 class="page-description">Todo o poder da Blockchain desburocratizando documentos e registros.</h2>
+	
+</div>
+<!-- End Page Info -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Header Back -->
+	<div id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<!-- Promo Title -->
+<div class="promo-title-wrapper helper pt60" id='sobre'>
+	<h3 class="promo-title" data-icon="&#xe6af">
+		Saiba Mais
+	</h3>
+	<p class="promo-description">
+		Aproveite todas as vantagens da tecnonolgia Blockchain para facilitar o registro e acesso de documentos por uma fração do preço e com agilidade inédita.
+	</p>
+</div>
+<!-- End of Promo Title -->
+
+				<div class="row">
+					<div class="col-md-6">
+						<!-- Box -->
+<div class="box box-small-icon-alt">
+	
+		<i class="pe-7s-plugin box-icon"></i>
+
+	
+	<h4 class="box-title">Modular</h4>
+	
+	
+	<p class="box-description">Nunca mais passe pelo impecílio de reconhecer firma em múltiplos cartórios. Uma vez registrado na nossa rede, qualquer nó autenticado consegue acessar seus documentos instantaneamente.</p>
+	
+	
+</div>
+<!-- End of Box -->
+					</div>
+					<div class="col-md-6">
+						<!-- Box -->
+<div class="box box-small-icon-alt">
+
+		<i class="pe-7s-cloud-upload box-icon"></i>
+
+	<h4 class="box-title">Escalável</h4>
+	
+	<p class="box-description">Nossa infraestrutura cloud apenas melhora a medida que novos estabelicimentos entram na rede, contando com deploys automatizados de blockchains IPFS privadas.</p>
+	
+</div>
+<!-- End of Box -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<!-- Box -->
+<div class="box box-small-icon-alt">
+
+		<i class="pe-7s-safe box-icon"></i>
+	
+	
+	<h4 class="box-title">Seguro</h4>
+	
+	
+	<p class="box-description">Todos os arquivos guardados são imutáveis e criptografados end-to-end, garantindo que apenas você e o estabelecimento registrador tenham acesso a eles.</p>
+	
+	
+</div>
+<!-- End of Box -->
+					</div>
+					<div class="col-md-6">
+						<!-- Box -->
+<div class="box box-small-icon-alt">
+
+	
+
+	
+		<i class="pe-7s-piggy box-icon"></i>
+	
+	<h4 class="box-title">Acessível</h4>
+	
+	
+	<p class="box-description">Corte gastos em filas, transporte, materiais, esperas operacionais, retrabalhos e burocracias contando com o Estado-da-Arte em infrainstrutura digital, sem complicações desnecessárias.</p>
+	
+	
+</div>
+<!-- End of Box -->
+					</div>
+				</div>
+
+				<!-- Promo Title -->
+<div class="promo-title-wrapper ">
+	<h3 class="promo-title" data-icon="&#xe629" id='como'>
+		Como funciona
+	</h3>
+	<p class="promo-description">
+		<br>Cada documento recebido é verificado, criptografado e guardado na Blockchain IPFS. <br><br> O link de acesso é entregue para a entidade registradora diretamente em seu dashboard + pdf pronto para impressão.
+		<br><br> O cliente também imediatamente recebe por SMS (graças à API da Twilio) o link de acesso + informações adicionais sobre seu documento. Este registro é perpétuo, portanto esqueça perdas, danos e invalidez.
+	</p>
+</div>
+<!-- End of Promo Title -->
+
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 col-sm-12">
+						
+<div class="code-highlight ">
+	<span class="js-copy-to-clipboard copy-code">copy</span>
+<pre><code class="language-python py-code">
+
+import ipfs
+from flask import Flask, jsonify,request
+from flask_cors import CORS
+import os
+import json
+from tempfile import NamedTemporaryFile
+import tempfile
+from sms import send_sms
+
+
+	@server.route('/image', methods=['POST'])
+	def receive_image():
+		# Get request file and save to server
+		image = request.files['file']
+		filename = image.filename
+
+		_current_imagepath = os.path.join(tempfile.gettempdir(), filename)
+		image.save(_current_imagepath)
+
+		# Upload to blockchain, save current data and return link to client
+		response = ipfs.upload_ipfs(_current_imagepath, 'IMG', _current_imagepath)
+		message = clean_response(response)
+
+		# define if request was successful
+		message["success"] = True
+
+		# send back the name
+		message["filename"] = filename
+
+		sms = "Hash: %s \n \
+File: %s \n \
+Type: %s \n \
+Link: %s \n" % (message['Hash'], message['filename'], message['type'], message['link'])
+		send_sms(sms)
+
+		with open ('current_data.json', 'w') as cd:
+			json.dump(message, cd)
+		return jsonify(message)
+</code></pre></div>
+
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="background-gradient-grey">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<!-- Promo Title -->
+<div class="promo-title-wrapper " id='demo'>
+	<h3 class="promo-title" data-icon="&#xe6c9">
+		Veja por sí só
+	</h3>
+	<p class="promo-description">
+		Não ficamos só no papo. Veja nossa infraestrutura cloud operando diretamente no seu navegador, desktop ou mobile. Faça o upload de até 10 imagens e receba o pdf contendo os links para o registro na Blockchain em instantes.
+	</p>
+</div>
+<!-- End of Promo Title -->
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="helper center mb60">
+						<a href="https://digital-doc-a1a2c.web.app/" target='_blank' class="reguest-demo-button button blue stroke rounded button-icon button-icon-right">
+							live demo
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+
+					<div class="helper center pb60">
+						
+	<img src="img/demos/screens/4.png" class="image remove-border"  alt="macbook and a clock">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Promo Title -->
+<div class="promo-title-wrapper " id='dashboard'>
+	<h3 class="promo-title" data-icon="&#xe642">
+		Dashboard
+	</h3>
+	<p class="promo-description">
+		Como agente do cartório, tenha acesso imediato a todos os registros feitos no seu sistema. Envie requisições instantaneamente verificadas para acesso a documentos de outros cartórios, exporte dados e tenha acesso a analíticos poderosos.
+	</p>
+</div>
+<!-- End of Promo Title -->
+
+				<!-- Featured Boxes -->
+<ul class="featured-boxes">
+	
+		<li class="featured-boxes-item">
+			
+	<img src="img/demos/boxes/7.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
+
+			<h5 class="featured-boxes-item-pretitle">mais</h5>
+			<h4 class="featured-boxes-item-title">Insights</h4>
+			<p class="featured-boxes-item-description">Acesse KPIs e gráficos autogerados com base nos seus dados e customize o dashboard ótimo para seu cartório.</p>
+			<a href="dash/index.html" class="featured-boxes-item-button button blue stroke rounded">
+				Acessar
+			</a>
+		</li>
+	
+		<li class="featured-boxes-item">
+			
+	<img src="img/demos/boxes/8.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
+
+			<h5 class="featured-boxes-item-pretitle">mais</h5>
+			<h4 class="featured-boxes-item-title">Agilidade</h4>
+			<p class="featured-boxes-item-description">Nosso próprio sistema de delegação descentralizada cuida da validação e troca de dados entre entidades.</p>
+			<a href="dash/apps-tickets.html" class="featured-boxes-item-button button blue stroke rounded">
+				Acessar
+			</a>
+		</li>
+	
+		<li class="featured-boxes-item">
+			
+	<img src="img/demos/boxes/9.png" class="featured-boxes-item-ico"  alt="featured-boxes image">
+
+			<h5 class="featured-boxes-item-pretitle">menos</h5>
+			<h4 class="featured-boxes-item-title">Burocracia</h4>
+			<p class="featured-boxes-item-description">Conte com uma interface limpa, simples e modular para tomar decisões importantes para sua equipe e otimizar sua operação.</p>
+			<a href="login.html" class="featured-boxes-item-button button blue stroke rounded">
+				Acessar
+			</a>
+		</li>
+	
+</ul>
+<!-- End of Featured Boxes -->
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="container-fluid" id='video'>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Video section -->
+
+<div class="video-section video-section-fullwidth ">
+	<img src="img/helpers/play-dark.png" alt="" class="video-section-button-img js-video-trigger" data-video='<iframe width="560" height="315" src="https://www.youtube.com/embed/ameRubhptms" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' href="youtube.com">
+</div>
+
+<!-- Endd  of Video section -->
+
+<!-- Video Trigger Modal -->
+<div class="js-video-trigger-modal video-trigger-modal">
+	<div class="js-video-trigger-modal-content video-trigger-modal-content"></div>
+</div>
+<!-- End of Video Trigger Modal -->
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+					
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Call to Action -->
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-4">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+	<!-- Footer -->
+<footer class="js-footer-is-fixed">
+	
+
+
+	<!-- Footer Default -->
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<div class="footer-logo-wrapper">
+						
+<!-- Logo Image -->
+<a href="index.html" class="logo-image "><img src="img/logos/logo.png" alt="logo"></a>
+<!-- End of Logo Image -->
+
+
+						<!-- Slogan -->
+						<p class="slogan">
+							Seguro. <br>Remoto. <br>Eficiente.
+						</p>
+						<!-- End of Slogan -->
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					<div class="footer-wrapper">
+						<!-- Scroll top -->
+						<span class="scroll-top js-scroll-top"><i class="fa fa-angle-up"></i></span>
+						<!-- End of Scroll top -->
+						<!-- Copyright -->
+						<p class="copyright helper right">
+							Tema por <a href="http://vsart.me/">VSArt</a>&copy;
+						</p>
+						<!-- End of Copyright -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Footer Default -->
+</footer>
+<!-- End of Footer -->
+
+
+    </div>
+    
+    
+    <script src="js/all.js"></script>
+    <script src="js/custom.js"></script>
+    
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!-- 
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
+     -->
+</body>
+
+</html>
