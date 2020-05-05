@@ -2,7 +2,7 @@ from twilio.rest import Client
 
 def send_sms(data):
     account_sid = 'AC11e4235ca56d17fbff7e15eda642dd5d'
-    auth_token = '19c06ac9950a7515c798bb30dc67d8d1'
+    auth_token = '19c06ac9950a7515c798bb30dc67d8'
     client = Client(account_sid, auth_token)
 
     message = str("DigitalDoc succesful! \n\
